@@ -1,0 +1,105 @@
+.team{
+  --image-height: 47rem;
+  padding: 10rem 0 12rem;
+  //using display flex
+  // &-list{
+  //   //using when 3 elements
+  //   @include flexbox(stretch,space-between);
+  // }
+  // &-item{
+  //   //1280 / 4 = 320 - 30 = (290 + 30) * 4 
+  //   width: calc(100% / 3 - 2rem);
+  // }
+  
+  &-list{
+    @include flexbox2(
+      (
+        alignItems: stretch
+      )
+    );
+    margin-left: -3rem;
+  }
+  &-item{
+    width: calc(100% / 3 - 3rem);
+    margin-left: 3rem;
+  }
+  //using display grid
+  // &-list{
+  //   display: grid;
+  //   grid-template-columns: repeat(3,1fr);
+  //   grid-column-gap: 3rem;
+  // }
+  &-info{
+    text-align: center;
+    padding: 3rem 1.5rem;
+    height: calc(100% - --image-height);
+    @include flexbox(center,space-between,column);
+  }
+  &-image{
+    @include size(100%, --image-height);
+    object-fit: cover;
+  }
+  &-name{
+    color: $title-color;
+    font-weight: 600;
+    margin-bottom: 1.7rem;
+    line-height: 1.6;
+    @include textClamp;
+  }
+  &-position{
+    font-family: $secondary-font;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: $text-color;
+  }
+  &-social{
+    @include flexbox(center,center);
+    &-item:not-child(:first-child){
+      border-left: 1px solid $primary-color;
+    }
+    &-link{
+      display: inline-block;
+      @include flexbox(center,center);
+      @include size(5.5rem);
+      font-size: 2.3rem;
+      background-color: $secondary-color;
+      color: $primary-color;
+      transition: all 0.25s linear;
+      &:hover{
+        background-color: $primary-color;
+        color: white;
+      }
+    }
+  }
+  @include maxWidth(1023px){
+    padding: 5rem 0 2rem;
+    &-list{
+      margin-left: 0;
+      @include touchSlider(60%,1rem);
+    }
+    // &-image{
+    //   height: 35rem;
+    // }
+    // &-info{
+    //   height: calc(100% - 35rem);
+    // }
+    --image-height: 35rem;
+    &-item{
+      margin-left: 2rem;
+    }
+  }
+  @include maxWidth(479px){
+    &-social-link{
+      @include size(4rem);
+      font-size: 2rem;
+    }
+  }
+}
+.brand{
+  padding: 7rem 1rem;
+  @include bg($gray-color);
+  @include maxWidth(767px){
+    padding: 3rem 1rem;
+  }
+}
+@include hoverEffect(".team-main",".team-content");

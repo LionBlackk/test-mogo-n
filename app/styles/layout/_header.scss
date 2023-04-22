@@ -1,0 +1,234 @@
+.header {
+  //cái nào nằm trên code trước, cái nào nằm dưới code sau
+  min-height: 100rem;
+  background: linear-gradient(to bottom, rgba($primary-color, 0.8), rgba($secondary-color, 0.8)), url("../images/header-bg.jpg") no-repeat center / cover;
+  color: white;
+  &-top{
+    display: flex;
+    padding-top: 3rem;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 18.5rem;
+  }
+  &-toggle{
+    display: none;
+  }
+  &-logo{
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  &-menu{
+    display: flex;
+    &-link{
+      text-transform: uppercase;
+      display: inline-block; 
+      transition: all 0.2s linear;
+    }
+  }
+  &-content{
+    text-align: center;
+    max-width: 80rem;
+    margin: 0 auto;
+    &-caption{
+      font-family: $third-font;
+      font-size: 7.2rem;
+      margin-bottom: 6.5rem;
+    }
+    &-main{
+      font-size: 15rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 5rem;
+      margin-bottom: 5rem;
+      &:before{
+        content: "";
+        position: absolute;
+        width: 7rem;
+        height: 0.4rem;
+        background-color: white;
+        bottom: 0;
+        @include absoluteCenter("left");
+      }
+    }
+    &-more{
+      display: inline-block;
+      text-transform: uppercase;
+      color: white;
+      font-weight: bold;
+      padding: 1rem 3rem;
+      border: 0.4rem solid white;
+    }
+  }
+  &-bottom{
+    margin-top: 15.5rem;
+    padding-bottom: 2.5rem;
+    display: flex;
+    &-item{
+      padding-top: 30px;
+      border-top: 3px solid white;
+      width: calc(25% - 30px);
+      margin-left: 30px;
+      opacity: 0.6;
+      position: relative;
+      cursor: pointer;
+      // ap dung cho pseudo-class
+      transition: all 0.2s linear;
+      &:before{
+        // ap dung rieng cho pseudo-element nay` 
+        content: "";
+        position: absolute;
+        @include size(7rem,0.3rem);
+        background-color: $primary-color;
+        left: 0;
+        top: 0;
+        transform: translateY(-100%);
+        transition: all 0.2s linear;
+        opacity: 0;
+      }
+    }
+    &-number{
+      font-weight: bold;
+      font-size: 1.8rem;
+    } 
+    &-text{
+      text-transform: uppercase;
+      font-size: 1.4rem;
+      padding-left: 10px;
+    }
+    &-item:hover,
+    &-item.is-active{
+      opacity: 1;
+      &:before{
+        opacity: 1;
+      }
+    }
+  }
+  @include minWidth(768px){
+    .header-menu-item:not(:first-child){
+      margin-left: 3.6rem;
+    }
+    &-menu{
+      display: flex;
+      &-link,&-icon{
+        color: white;
+      }
+      &-link{
+        display: inline-block; 
+        padding-bottom: 1rem;
+        border-bottom: 0.4rem solid transparent;
+        &:hover{
+          color: $secondary-color;
+          border-bottom-color: $secondary-color;
+        }
+      }
+    }
+  }
+  @include minWidth(1280px){
+    .header-menu-item:not(:first-child){
+      margin-left: 5.7rem;
+    }
+  }
+  @include maxWidth(1023px){
+    min-height: unset;
+    .header-top{
+      margin-bottom: 10.5rem;
+    }
+    .header-bottom{
+      margin-top: 10.5rem;
+    }
+    .header-content-main{
+      font-size: 10rem;
+    }
+  }
+  @include maxWidth(767px){
+    .header-bottom-text{
+      display: none;
+    }
+    .header-top{
+      margin-bottom: 5.5rem;
+    }
+    .header-content-caption{
+      margin-bottom: 3.5rem;
+      font-size: 5.8rem;
+    }
+    .header-content-main{
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      font-size: 6.1rem;
+    }
+    .header-bottom{
+      margin-top: 6rem;
+    }
+    .header-bottom-item{
+      padding-top: 2rem;
+      text-align: center;
+    }
+    .header-bottom-item:before{
+      width: 35%;
+    }
+    //must be using javascript
+    .header-menu{
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: white;
+      width: 30rem;
+      display: block;
+      padding: 20px 25px;
+      z-index: 10;
+      transition: all 0.2s linear;
+      transform: translateX(100%);
+    }
+    .header-menu-item{
+      margin-bottom: 1rem;
+    }
+    .header-menu-icon{
+      display: inline-block;
+      padding: 15px;
+      color: $title-color;
+      &:hover{
+        color: $primary-color;
+      }
+    }
+    .header-menu-icon,
+    .header-menu-link{
+      padding: 15px;
+      width: 100%;
+      color: $title-color;
+    }
+    .header-menu-link:not(:last-child),
+    .header-menu-link:not(:nth-last-child(2)){
+      color: $title-color;
+      &:hover{
+        color: white;
+        background-color: $secondary-color;
+        border-radius: 4px;
+      }
+    }
+    .header-toggle{
+      display: inline-block;
+      font-size: 1.8rem;
+      align-self: center;
+    }
+    .header-menu.is-expand{
+      transform: translateX(0);
+    }
+  }
+  @include maxWidth(280px){
+    .header-top{
+      margin-bottom: 3rem;
+    }
+    .header-content-caption{
+      font-size: 3rem;
+    }
+    .header-content-main{
+      font-size: 4.3rem;
+    }
+    .header-bottom{
+      margin-top: 3rem;
+    }
+  }
+} 

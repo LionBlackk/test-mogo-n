@@ -1,0 +1,104 @@
+.wedo{
+  padding: 10rem 0;
+  // &-container{
+  //   @include flexbox(stretch,space-between);
+  //   & > *{
+  //     width: calc(50% - 1.5rem);
+  //   }
+  // }
+  // &-image,
+  // &-content{
+  //   width: calc(50% - 1.5rem);
+  // }
+  
+  //using css grid
+  &-container{
+    display: flex;
+    grid-template-columns: repeat(2,1fr);
+    grid-column-gap: 3rem;
+  }
+  &-image{
+    object-fit: cover;
+  }
+  &-item-header{
+    @include flexbox(center);
+    padding: 1.5rem;
+    border: 1px solid $gray-light-color;
+    cursor: pointer;
+  }
+  &-item-image{
+    margin-right: 1.5rem;
+  }
+  &-item-title{
+    text-transform: uppercase;
+    font-weight: 500;
+    //if you using () then default config
+    // @include data(
+    //   ()
+    // );
+
+    //if you using (color: ....) then apply current object
+    // @include data(
+    //   (
+    //     background-color: black
+    //   )
+    // );
+  }
+  &-item-arrow{
+    margin-left: auto;
+    font-size: 3.5rem;
+    color: $gray-dark-color;
+  }
+  &-item.is-active .wedo-item-content{
+    display: block;
+  }
+  &-item-content{
+    padding: 2rem;
+    font-family: $secondary-font;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: $text-color;
+    border: 1px solid $gray-light-color;
+    border-top: 0;
+    line-height: 1.6;
+    display: none;
+  }
+  &-item:not(:last-child){
+    margin-bottom: 1rem;
+  }
+  &-item-text{
+    height: 13rem;
+    overflow-y: auto;
+    padding-right: 2rem;
+    &::-webkit-scrollbar {
+      width: 6px; 
+    }
+    &::-webkit-scrollbar-thumb { 
+      background-color: $third-color;
+      border-radius: 2rem;
+    }
+    &::-webkit-scrollbar-track { 
+      background-color: $gray-light-color;
+      border-radius: 2rem;
+    }
+  }
+  @include maxWidth(479px){
+    padding: 5rem 0; 
+    &-container{
+      display: block;
+    }
+    &-image,
+    &-content{
+      width: 100%;
+    }
+  }
+  @include maxWidth(768px){
+    &-container{
+      display: block;
+    }
+    &-image,
+    &-content{
+      width: 100%;
+    }
+  }
+}

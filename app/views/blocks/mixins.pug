@@ -1,0 +1,134 @@
+mixin menuLink(data)
+	li.header-menu-item
+		a.header-menu-link(href= data.href)= data.title
+
+mixin headerBottomItem(data)
+	.header-bottom-item
+		span.header-bottom-number= data.number
+		span.header-bottom-text= data.title
+
+mixin blockBox(caption, title, desc)
+	.block-box
+		h3.block-box-caption= caption
+		h2.block-box-title= title
+		if desc 
+			p.block-box-desc= desc
+
+mixin aboutItem(data)
+	.about-item
+		img.about-image(src= data.src)
+		.about-content
+			i.about-icon(class= data.iconClass)
+			span.about-title= data.title
+
+mixin numberItem(count, text)
+	.number-item
+		h4.number-item-count= count
+		span.number-item-text= text
+
+mixin serviceItem(src, title, desc)
+	.service-item
+		img.service-item-icon(src= src)
+		.service-item-info
+			h3.service-item-title= title
+			p.service-item-desc= desc
+
+mixin wedoItem(src, title, content, activeClass= "")
+	.wedo-item(class= activeClass)
+		.wedo-item-header
+			img.wedo-item-image(src= src)
+			h3.wedo-item-title= title
+			i.fal.fa-angle-down.wedo-item-arrow
+		.wedo-item-content
+			.wedo-item-text
+				p=content
+
+mixin teamSocial(facebook= "#", twitter= "#", pinterest= "#",instagram= "#")
+	ul.team-social
+		li.team-social-item
+			a.team-social-link(href= facebook)
+				i.fab.fa-facebook-f 
+		li.team-social-item
+			a.team-social-link(href= twitter)
+				i.fab.fa-twitter
+		li.team-social-item
+			a.team-social-link(href= pinterest)
+				i.fab.fa-pinterest
+		li.team-social-item
+			a.team-social-link(href= instagram)
+				i.fab.fa-instagram
+
+mixin teamItem(src,name,position)
+	.team-item
+		.team-main
+			img(src= src).team-image
+			.team-content
+				if block
+					block
+		.team-info
+			h3.team-name= name
+			span.team-position= position
+
+mixin workItem(src, srcIcon, title, desc, classFull= "")
+	.work-item(class= classFull)
+		img.work-image(src= src)
+		.work-content
+			img.work-icon(src= srcIcon)
+			h3.work-title= title
+			span.work-desc.text.text-light= desc 
+mixin workItemFull(src, srcIcon, title, desc)
+	.work-item.work-item--full
+		img.work-image(src= src)
+		.work-content
+			img.work-icon(src= srcIcon)
+			h3.work-title= title
+			span.work-desc.text.text-light= desc
+
+mixin peopleItem(src, name, job, desc)
+	.people-item
+		img.people-avatar(src= src)
+		.people-info
+			h4.people-name= name 
+			span.people-job.text.text--light= job
+			p.people-desc.text= desc
+
+mixin storyItem(src= "images/img-blog1.png", dateNumber= 15, dateText= "Jan", title= "Lorem ipsum dolor sit amet, consectetur adipisicing elit", desc= "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", views= 542, comments= 17)
+	li.story-item
+		.story-social
+			img.story-image(src= src)
+			.story-date
+				span.story-date-number= dateNumber
+				span.story-date-text.text.text--light= dateText
+		span.story-title= title 
+		.story-desc.text.text-normal
+			p.story-desc-inner= desc
+		.story-meta
+			.story-meta-item
+				i.fa.fa-eye.story-icon
+				span.story-meta-number.text= views
+			.story-meta-item
+				i.fa.fa-comment.story-icon
+				span.story-meta-number.text= comments
+
+mixin quoteItem(src= "images/img-quote.png",type= false, desc= "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", author= "Jon Doe")
+	.quote-item
+		if type == false
+			.quote-icon
+				img(src= src)
+		else 
+			.quote-image
+				img(src= src)
+		.quote-info
+			p.quote-desc= desc
+			span.quote-author= author
+
+mixin footerSocialItem(link, iconClass)
+	a.footer-social-icon(href= "#")
+		i(class= iconClass)
+
+mixin footerBlogItem(link = "#", src = "images/img-blogs1.png", title = "Lorem ipsum, dolor sit amet consectetur adipisicing elit", date = "Jan 9, 2016")
+	a(href= link).footer-blog-item
+		img.footer-blog-image(src= src)
+		.footer-blog-info
+			.footer-blog-title= title
+			.footer-blog-date.text.text--light= date

@@ -1,0 +1,125 @@
+.quote{
+  padding: 7rem 0;
+  background-color: $gray-color;
+  &-container{
+    @include flexbox(center,space-between);
+  }
+  &-arrow-left,
+  &-arrow-right{
+    font-size: 3rem;
+    font-weight: 400;
+    color: $gray-dark-color;
+    cursor: pointer;
+  }
+  &-arrow-left{
+    margin-right: auto;
+    padding: 2.7rem;
+  }
+  &-arrow-right{
+    margin-left: auto;
+    padding: 2.7rem;
+  }
+  &-item{
+    @include flexbox(center);
+    padding: 0 5.5rem;
+  }
+  &-icon{
+    @include size(15rem);
+    @include flexbox(center,center);
+    border: 3px solid $gray-dark-color;
+    margin-right: 6.5rem;
+    flex-shrink: 0;
+  }
+  &-image{
+    @include size(21rem);
+    @include flexbox(center,center,space-between);
+    border-radius: 100rem;
+    margin-right: 2.5rem;
+    flex-shrink: 0;
+  }
+  &-desc{
+    font-family: $secondary-font;
+    font-size: 2.4rem;
+    font-style: italic;
+    line-height: 1.5;
+    color: $text-color;
+    font-weight: 200;
+    margin-bottom: 2rem;
+    @include textClamp(3);
+  }
+  &-author{
+    font-family: $third-font;
+    font-size: 2.4rem;
+    padding-left: 7.2rem;
+    position: relative;
+    &:after{
+      content: "";
+      position: absolute;
+      @include size(6.5rem,3px);
+      left: 0;
+      @include absoluteCenter("top");
+      background-color: $primary-color;
+    }
+  }
+  //slick slider
+  .slick-initialized .slick-slide {
+    display: flex;
+  }
+  .slick-arrow{
+    background-color: transparent;
+    border: 0;
+    font-size: 3rem;
+    font-weight: 400;
+    color: $gray-dark-color;
+    cursor: pointer;
+  }
+  @include maxWidth(767px){
+    padding: 3rem 0;
+    &-arrow-left,
+    &-arrow-right{
+      display: none;
+    }
+    &-item{
+      display: block;
+      padding: 0;
+    }
+    &-icon{
+      width: 30%;
+      height: 10rem;
+      margin-bottom: 2rem;
+      margin-right: 3rem;
+    }
+    &-icon img{
+      width: 40%;
+    }
+    &-info{
+      width: 100%;
+    }
+    &-desc{
+      display: block;
+      font-size: 1.4rem;
+      @include textClamp(3);
+      margin-bottom: 1rem;
+    }
+    &-author{
+      font-size: 1.4rem;
+      &:after{
+        width: 5.5rem;
+        height: 2.3px;
+      }
+    }
+  }
+  @include maxWidth(479px){
+    &-image{
+      @include size(12rem);
+    }
+  }
+  @include maxWidth(1023px){
+    &-image{
+      @include size(17rem);
+    }
+    &-item{
+      padding: 0 4rem;
+    }
+  }
+}

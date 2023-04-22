@@ -1,0 +1,115 @@
+.work{
+  padding-top: 10rem;
+  //using flexbox
+  &-list{
+    @include flexbox(stretch);
+    height: 78rem;
+  }
+  &-column{
+    width: 25%;
+  } 
+  &-item{
+    color: white;
+    text-align: center;
+  }
+  &-item{
+    height: 50%;
+  }
+  &-desc{
+    color: white;
+  }
+  &-item--full{
+    height: 100%;
+  }
+  &-image{
+    @include size(100%);
+    object-fit: cover;
+  }
+  &-icon{
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+  &-title{
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+    @include textClamp(1);
+  }
+  @include maxWidth(1600px){
+    &-list{
+      height: 60rem;
+    }
+  }
+  @include maxWidth(1279px){
+    &-list{
+      flex-wrap: wrap;
+    }
+    &-column{
+      width: 50%;
+    }
+    &-item{
+      height: 42rem;
+    }
+    &-item--full{
+      height: 84rem;
+    }
+  }
+  @include maxWidth(767px){
+    padding-top: 5rem;
+    &-column{
+      width: 100%;
+    }
+    &-item,
+    &-item--full{
+      height: auto;
+    }
+  }
+}
+
+.work{
+  &-grid{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: 39rem 39rem;
+    grid-template-areas: "i1 i2 i5 i6" "i3 i4 i5 i7";
+  }
+  &-item{
+    @include size(100%);
+  }
+  &-item:first-child{
+    grid-area: i1;
+  }
+  &-item:nth-child(2){
+    grid-area: i2;
+  }
+  &-item:nth-child(3){
+    grid-area: i3;
+  }
+  &-item:nth-child(4){
+    grid-area: i4;
+  }
+  &-item:nth-child(5){
+    grid-area: i5;
+  }
+  &-item:nth-last-child(2){
+    grid-area: i6;
+  }
+  &-item:last-child{
+    grid-area: i7;
+  }
+  @include maxWidth(1279px){
+    &-grid{
+      grid-template-columns: repeat(2,1fr);
+      grid-template-areas: "i1 i2" "i3 i4" "i5 i6" "i5 i7";
+    }
+  }
+  @include maxWidth(767px){
+    &-grid{
+      display: block;
+    }
+  }
+  @include maxWidth(1023px){
+    padding: 5rem 0 0;
+  }
+}
+@include hoverEffect(".work-item",".work-content","false");

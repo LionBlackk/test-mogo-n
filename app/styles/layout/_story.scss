@@ -1,0 +1,117 @@
+.story{
+  padding: 11rem 0;
+  &-list{
+    @include flexbox(stretch,space-between);
+    // @include flexbox(stretch);
+    // flex-wrap: wrap;
+    // margin-left: -3rem;
+  }
+  &-item{
+    width: calc(100% / 3 - 2rem);
+    // width: calc(100% / 3 - 3rem);
+    // margin-left: 3rem;
+  }
+  &-image{
+    @include size(100%,24rem);
+    object-fit: cover;
+  }
+  &-social{
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  &-date{
+    position: absolute;
+    @include flexbox(center,center,column);
+    padding: 1.5rem 2rem;
+    left: -1rem;
+    bottom: 1rem;
+    background-color: #95e1d3;
+    color: white;
+    &-number{
+      font-size: 3rem;
+      font-weight: bold;
+    }
+    &-text{
+      color: white;
+    }
+  }
+  &-title{
+    color: $title-color;
+    text-transform: uppercase;
+    font-weight: 600;
+    @include textClamp(1);
+  }
+  &-desc{
+    margin-top: 2rem;
+    font-family: $secondary-font;
+    font-size: 1.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid $gray-dark-color;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  &-desc-inner{
+    @include textClamp(4);
+  }
+  &-meta-item{
+    display: inline-block;
+    color: $gray-dark-color;
+  }
+  &-meta-item:not(:first-child){
+    margin-left: 2rem;
+  }
+  &-meta-number{
+    padding-left: 0.5rem;
+  }
+  @include maxWidth(767px){
+    padding: 5rem 0 0;
+    &-list{
+      display: block;
+    }
+    &-item{
+      width: 100%;
+      margin-bottom: 5rem;
+    }
+    &-image{
+      height: 16rem;
+    }
+    &-desc{
+      margin-top: 1.5rem;
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+  @include maxWidth(1023px){
+    padding: 5rem 0;
+  }
+}
+
+.map{
+  padding: 5.5rem 0;
+  background: linear-gradient(to bottom, rgba(white,0.9), rgba(white,0.9)), url("../images/img-map.png") no-repeat center / cover;
+  &-container{
+    @include flexbox(center,center,column);
+  }
+  &-image{
+    font-size: 1rem;
+  }
+  &-text{
+    display: inline-block;
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: $primary-color;
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+    text-transform: uppercase;
+    position: relative;
+    &:after{
+      content: "";
+      position: absolute;
+      @include size(5rem, 4px);
+      @include bg($primary-color);
+      @include absoluteCenter();
+      bottom: 0;
+    }
+  }
+
+}
